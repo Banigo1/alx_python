@@ -15,3 +15,5 @@ elif last_digit < 6 and last_digit != 0:
     msg += " and is less than 6 and not 0"
 
 print(msg)
+
+
