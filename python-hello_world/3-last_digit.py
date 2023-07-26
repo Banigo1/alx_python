@@ -15,5 +15,8 @@ elif last_digit < 6 and last_digit != 0:
     msg += " and is less than 6 and not 0"
 
 print(msg)
+<<<<<<< HEAD:3-last_digit.py
 
 
+=======
+>>>>>>> 916c2f87a8c5135c2c2c677bb23f6dce421ce312:python-hello_world/3-last_digit.py
