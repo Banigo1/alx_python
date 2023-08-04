@@ -1,13 +1,7 @@
 #!/usr/bin/python3
-def raise_exception_msg(message=""):
-  """Raises a name exception with a message.
-  Args:
-    message: The message to be included in the exception.
+raise_exception_msg = __import__('5-raise_exception_msg').raise_exception_msg
 
-  Raises:
-    NameError: The exception raised.
-  """
-
-  if message == "":
-    message = "No Message Provided."
-  raise NameError(message)
+try:
+    raise_exception_msg("C is fun")
+except NameError as ne:
+    print(ne)
