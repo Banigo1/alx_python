@@ -1,9 +1,12 @@
-#!/usr/bin/python3
-raise_exception_msg = __import__('5-raise_exception_msg').raise_exception_msg
+def raise_exception_msg(message=""):
+    raise Exception(message)
 
 try:
-    raise_exception_msg("C is fun")
-    raise_exception_msg("Python is cool")
-    raise_exception_msg("")
-except NameError as ne:
-    print(ne)
+    raise_exception_msg("c is fun")
+except Exception as e:
+    print("Exception:", e)
+
+try:
+    raise_exception_msg("python is cool")
+except Exception as e:
+    print("Exception:", e)
