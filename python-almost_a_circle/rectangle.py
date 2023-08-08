@@ -260,6 +260,7 @@ class Rectangle(Base):
             self.__y = value
             
             
+            
     # 5. __str__
     
     class Rectangle:
@@ -292,7 +293,12 @@ class Rectangle(Base):
         if value <= 0:
             raise ValueError('Height must be positive')
         self.__height = value
+       
+        """
         
+        Triangle Display
+        
+        """
         
         # 6. Display #1
 
@@ -361,7 +367,6 @@ class Rectangle:
         return f"Rectangle ({self.width}, {self.height})"
 
     # 7. Update #0
-    
     class Rectangle:
     def __init__(self, width, height, x=0, y=0):
         self.__width = width
@@ -392,6 +397,7 @@ class Rectangle:
             self.__x = args[3]
         if len(args) > 4:
             self.__y = args[4]
+
 
     # 8. Update #1
     
@@ -438,5 +444,3 @@ class Rectangle:
                     self.__x = value
                 if key == 'y':
                     self.__y = value
-
-    
