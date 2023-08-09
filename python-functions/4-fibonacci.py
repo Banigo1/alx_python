@@ -5,7 +5,7 @@ def fibonacci_sequence(n):
     if n == 0:
         fibonacci_numbers =[]
     elif n <= 1:
-        fibonacci_numbers=[0]
+        fibonacci_numbers=[]
     else:
         fibonacci_numbers = [0, 1]
         for i in range(2, n):
