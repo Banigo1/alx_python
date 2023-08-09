@@ -11,5 +11,3 @@ def fibonacci_sequence(n):
         for i in range(2, n):
             fibonacci_numbers.append(fibonacci_numbers[i-1] + fibonacci_numbers[i-2])
     return(fibonacci_numbers )
-
-print(fibonacci_sequence(0))
