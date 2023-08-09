@@ -9,9 +9,6 @@ def fibonacci_sequence(n):
         fibonacci_numbers=[0]
     else:
         fibonacci_numbers = [0, 1]
-        for i in range(1, n):
+        for i in range(2, n):
             fibonacci_numbers.append(fibonacci_numbers[i-1]+fibonacci_numbers[i-2])
     return(fibonacci_numbers )
-
-
-print(fibonacci_sequence(0))
