@@ -7,7 +7,7 @@ def fibonacci_sequence(n):
         return []
 
     fibonacci_numbers = [0]
-    for i in range(1, n):
+    for i in range(2, n):
         fibonacci_numbers.append(fibonacci_numbers[i - 1] + fibonacci_numbers[i - 2])
 
     return fibonacci_numbers
