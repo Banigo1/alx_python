@@ -10,13 +10,23 @@ def pow(a, b):
     Returns:
         int: The power of the number.
     """
-
+    """
     if b == 0:
         return 1
     elif b < 0:
         return 1 / pow(a, -b + 1)
     else:
         return a * pow(a, b - 1)
+      
+      """
+    if b == 0:
+        return 1
+    elif b < 0:
+        return 1 / pow(1 / a, -b + 1)
+    else:
+        return a * pow(a, b - 1)
+
+      
       
 # Test the pow() function
 if __name__ == "__main__":
