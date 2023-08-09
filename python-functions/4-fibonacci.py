@@ -12,4 +12,7 @@ def fibonacci_sequence(n):
             fibonacci_numbers.append(fibonacci_numbers[i-1]+fibonacci_numbers[i-2])
     return(fibonacci_numbers )
 
-    print(fibonacci_sequence(6))
+print(fibonacci_sequence(6))
+print(fibonacci_sequence(1))
+print(fibonacci_sequence(0))
+print(fibonacci_sequence(20))
