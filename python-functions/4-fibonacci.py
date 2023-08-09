@@ -1,27 +1,14 @@
 # Fibonacci Sequence Function
-def fibo(n):
-    if n == 1:
-        return 1
-        
-    elif n == 0:
-        return 0
-    
-    elif n > 1:
-        return fibo(n-1) + fibo(n-2)
-        
-       
+
+def fibonacci_sequence(n):
     #Returns a list of the first n Fibonacci numbers.
-    def fibonacci_sequence(t):
-        lis = []
-        for i in range(t):
-            if i >= 0:
-                lis.append(fibo(i))
-        return lis
     
-    def main():
-        num = int(input())
-        print(fibonacci_sequence(num))
-        pass
+    if n <= 0:
+        return []
+
+    fibonacci_numbers = [0, 1]
+    for i in range(2, n):
+        fibonacci_numbers.append(fibonacci_numbers[i - 1] + fibonacci_numbers[i - 2])
+
+    return fibonacci_numbers
     
-    if __name__ == "__main__":
-        main()
