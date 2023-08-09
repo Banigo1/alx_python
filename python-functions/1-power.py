@@ -18,7 +18,8 @@ def pow(a, b):
         return 1 / pow(a, -b + 1)
     else:
         return a * pow(a, b - 1)
-
+      
+# Test the pow() function
 if __name__ == "__main__":
   print(pow(2, 3))  # 2^3 = 8
   print(pow(3, 4))  # 3^4 = 81
