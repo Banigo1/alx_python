@@ -1,12 +1,23 @@
+#!/usr/bin/python3
+import uuid
 class Base:
+    """Base class for all other classes."""
+
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """
+        Initialize the Base object.
+
+        Args:
+            id (int, optional): The id of the object. If not provided, an id will be generated.
+        """
         if id is not None:
             self.id = id
         else:
+            self.id = uuid.uuid4().int
             Base.__nb_objects += 1
-            self.id = Base.__nb_objects
+            
 
 from models.base import Base
 
