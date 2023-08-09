@@ -8,6 +8,12 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
+__doc__ = """
+This module provides the Base class for all other classes in this project.
+
+The Base class manages the `id` attribute in all future classes and to avoid duplicating the same code (by extension, same bugs).
+"""
+
 from models.base import Base
 
 if __name__ == "__main__":
