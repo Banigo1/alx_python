@@ -1,6 +1,5 @@
 
-import sys
-sys.setrecursionlimit(10000)
+import math
 def pow(a, b):
     """Calculates the power of a number.
 
