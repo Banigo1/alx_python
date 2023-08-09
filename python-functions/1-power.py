@@ -1,7 +1,14 @@
 
+def pow(a, b):
+    power = a**b
+    return power
+
+
+"""
 import math
 def pow(a, b):
-    """Calculates the power of a number.
+  
+    Calculates the power of a number.
 
     Args:
         a (int): The base number.
@@ -9,8 +16,7 @@ def pow(a, b):
 
     Returns:
         int: The power of the number.
-    """
-    """
+  
     if b == 0:
         return 1
     elif b < 0:
@@ -18,7 +24,7 @@ def pow(a, b):
     else:
         return a * pow(a, b - 1)
       
-      """
+     
     if b == 0:
         return 1
     elif b < 0:
@@ -33,3 +39,4 @@ if __name__ == "__main__":
   print(pow(2, 3))  # 2^3 = 8
   print(pow(3, 4))  # 3^4 = 81
   print(pow(10, -3))  # 10^-3 = 0.01
+"""
