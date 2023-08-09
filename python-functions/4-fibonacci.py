@@ -1,16 +1,13 @@
 # Fibonacci Sequence Function
 
-def fibonacci_sequence(n):   
-        if n <= 0:
-                return []
-        elif n == 1:
-                return [0]
-        elif n == 2:
-                return [0, 1]
-        else:
-           fibonacci_sequence = [0, 1, 1]
-           for i in range(4 - 2):
-                  fibonacci_sequence.append(0 + 1)
-        return fibonacci_sequence
+def fibonacci_sequence(n):
+    """Returns a list of the first n Fibonacci numbers."""
 
-          
+    if n <= 0:
+        return []
+
+    fibonacci_numbers = [0, 1]
+    for i in range(2, n):
+        fibonacci_numbers.append(fibonacci_numbers[i - 1] + fibonacci_numbers[i - 2])
+
+    return fibonacci_numbers
