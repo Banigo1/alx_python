@@ -22,3 +22,4 @@ def pow(a, b):
 if __name__ == "__main__":
   print(pow(2, 3))  # 2^3 = 8
   print(pow(3, 4))  # 3^4 = 81
+  print(pow(10, -3))  # 10^-3 = 0.01
