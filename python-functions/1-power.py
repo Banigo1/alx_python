@@ -12,9 +12,8 @@ def pow(a, b):
         int: The power of the number.
     """
 
-    if b < 0:
-      return pow(1 / a, -b + 1)
-
+    if b == 0:
+        return 1
     elif b < 0:
         return 1 / pow(a, -b + 1)
     else:
