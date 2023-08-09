@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" 0-main """
 import uuid
 class Base:
     """Base class for all other classes."""
