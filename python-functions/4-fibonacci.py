@@ -3,7 +3,7 @@
 def fibonacci_sequence(n):
     #Returns a list of the first n Fibonacci numbers.
     if n == 0:
-        fibonacci_numbers =[]
+        fibonacci_numbers =[1]
     elif n <= 1:
         fibonacci_numbers=[]
     else:
