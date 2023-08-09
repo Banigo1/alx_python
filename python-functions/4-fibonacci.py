@@ -13,8 +13,9 @@ def fibo(n):
     #Returns a list of the first n Fibonacci numbers.
     def fibonacci_sequence(t):
         lis = []
-    for i in range():
-        lis.append(fibo(i))
+        for i in range(t):
+            if i >= 0:
+                lis.append(fibo(i))
         return lis
     
     def main():
