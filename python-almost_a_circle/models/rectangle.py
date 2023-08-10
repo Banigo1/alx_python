@@ -90,9 +90,10 @@ class Rectangle(Base):
 
 
 
+
+
     #  2. Validate attributes
     
-        
         from models.base import Base
 
 class Rectangle(Base):
