@@ -2,7 +2,7 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """A class to represent a rectangle.
+    """class Rectangle that inherits from the class Base
 
     Attributes:
         width: The width of the rectangle.
@@ -17,7 +17,9 @@ class Rectangle(Base):
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Initializes the rectangle."""
+        """Rectangle.__init__() initializes the rectangle.
+        def __init__(self, width, height, x=0, y=0, id=None):
+        """
         super().__init__(id)
         self.width = width
         self.height = height
