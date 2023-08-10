@@ -2,6 +2,10 @@
 
 # 1. First Rectangle
 from models.base import Base
+"""
+This module defines the Rectangle class, which represents a rectangle.
+"""
+    # First Rectangle
 
 class Rectangle(Base):
     """
