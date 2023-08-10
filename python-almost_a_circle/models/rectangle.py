@@ -1,19 +1,32 @@
 from models.base import Base
 
+
 class Rectangle(Base):
-    """A class to represent a rectangle."""
+    """A class to represent a rectangle.
+
+    Attributes:
+        width: The width of the rectangle.
+        height: The height of the rectangle.
+        x: The x-coordinate of the rectangle.
+        y: The y-coordinate of the rectangle.
+
+    Example:
+        >>> rectangle = Rectangle(10, 20, 10, 20)
+        >>> print(rectangle)
+        [Rectangle] (1) 10/20 - 10/20
+    """
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initializes the rectangle."""
         super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
 
     def __str__(self):
         """Returns a string representation of the rectangle."""
-        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
 
     @property
     def width(self):
@@ -62,3 +75,4 @@ class Rectangle(Base):
         if y < 0:
             raise ValueError("Y-coordinate must be non-negative.")
         self.__y = y
+        
