@@ -5,8 +5,9 @@ from models.base import Base
 """
 This module defines the Rectangle class, which represents a rectangle.
 """
-    # First Rectangle
-
+    # 1. First Rectangle
+    #!/usr/bin/python3
+    
 class Rectangle(Base):
     """
     A class representing a rectangle.
@@ -34,18 +35,17 @@ This class has the following public methods:
 * y: Sets the y-coordinate of the rectangle.
 
 To create a new rectangle, you can use the following syntax:
-
 ```python
 rectangle = Rectangle(width=10, height=20, x=0, y=0)
-
-
-The `width`, `height`, `x`, and `y` arguments are optional. If they are not specified, the default values will be used.
-
-The `Rectangle` class can be used to represent a rectangle in your code. You can use the public methods of the class to get and set the attributes of the rectangle.
+The `width`, `height`, `x`, and `y` arguments are optional. 
+If they are not specified, the default values will be used.
+The `Rectangle` class can be used to represent a rectangle in your code. 
+You can use the public methods of the class to get and set the attributes of the rectangle.
 """
 
 
     def __init__(self, width, height, x=0, y=0, id=None):
+        
         """
         Initializes a new instance of the Rectangle class.
 
