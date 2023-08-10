@@ -1,4 +1,5 @@
-from models.base import Base
+
+from base import Base
 
 
 class Rectangle(Base):
@@ -25,11 +26,7 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
-
-    def __str__(self):
-        """Returns a string representation of the rectangle."""
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
-
+    
     @property
     def width(self):
         """Gets the width of the rectangle."""
@@ -77,4 +74,3 @@ class Rectangle(Base):
         if y < 0:
             raise ValueError("Y-coordinate must be non-negative.")
         self.__y = y
-        
