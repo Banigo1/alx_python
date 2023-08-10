@@ -1,26 +1,6 @@
 # models/rectangle.py
-
 # 1. First Rectangle
-from models.base import Base
 """
-This module defines the Rectangle class, which represents a rectangle.
-"""
-    # 1. First Rectangle
-    #!/usr/bin/python3
-    
-class Rectangle(Base):
-    """
-    A class representing a rectangle.
-
-    Attributes:
-    id (int): The identifier of the rectangle.
-    width (int): The width of the rectangle.
-    height (int): The height of the rectangle.
-    x (int): The x-coordinate of the top-left corner of the rectangle.
-    y (int): The y-coordinate of the top-left corner of the rectangle.
-    """
-    
-    """
 A class to represent a rectangle.
 
 This class has the following public methods:
@@ -35,114 +15,83 @@ This class has the following public methods:
 * y: Sets the y-coordinate of the rectangle.
 
 To create a new rectangle, you can use the following syntax:
+
 ```python
 rectangle = Rectangle(width=10, height=20, x=0, y=0)
-The `width`, `height`, `x`, and `y` arguments are optional. 
-If they are not specified, the default values will be used.
-The `Rectangle` class can be used to represent a rectangle in your code. 
-You can use the public methods of the class to get and set the attributes of the rectangle.
+
+
+The `width`, `height`, `x`, and `y` arguments are optional. If they are not specified, the default values will be used.
+
+The `Rectangle` class can be used to represent a rectangle in your code. You can use the public methods of the class to get and set the attributes of the rectangle.
 """
+
+from models.base import Base
+
+
+class Rectangle(Base):
+    """A class to represent a rectangle."""
 
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        
-        """
-        Initializes a new instance of the Rectangle class.
-
-        Parameters:
-        width (int): The width of the rectangle.
-        height (int): The height of the rectangle.
-        x (int, optional): The x-coordinate of the top-left corner of the rectangle. Defaults to 0.
-        y (int, optional): The y-coordinate of the top-left corner of the rectangle. Defaults to 0.
-        id (int, optional): The identifier of the rectangle. Defaults to None.
-        """
+        """Initializes the rectangle."""
         super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self._width = width
+        self._height = height
+        self._x = x
+        self._y = y
 
     @property
     def width(self):
-        """
-        Gets the width of the rectangle.
-
-        Returns:
-        int: The width of the rectangle.
-        """
-        return self.__width
+        """Gets the width of the rectangle."""
+        return self._width
 
     @width.setter
-    def width(self, value):
-        """
-        Sets the width of the rectangle.
-
-        Parameters:
-        value (int): The new width of the rectangle.
-        """
-        self.__width = value
+    def width(self, width):
+        """Sets the width of the rectangle."""
+        if width < 0:
+            raise ValueError("Width must be non-negative.")
+        self._width = width
 
     @property
     def height(self):
-        """
-        Gets the height of the rectangle.
-
-        Returns:
-        int: The height of the rectangle.
-        """
-        return self.__height
+        """Gets the height of the rectangle."""
+        return self._height
 
     @height.setter
-    def height(self, value):
-        """
-        Sets the height of the rectangle.
-
-        Parameters:
-        value (int): The new height of the rectangle.
-        """
-        self.__height = value
+    def height(self, height):
+        """Sets the height of the rectangle."""
+        if height < 0:
+            raise ValueError("Height must be non-negative.")
+        self._height = height
 
     @property
     def x(self):
-        """
-        Gets the x-coordinate of the top-left corner of the rectangle.
-
-        Returns:
-        int: The x-coordinate of the top-left corner of the rectangle.
-        """
-        return self.__x
+        """Gets the x-coordinate of the rectangle."""
+        return self._x
 
     @x.setter
-    def x(self, value):
-        """
-        Sets the x-coordinate of the top-left corner of the rectangle.
-
-        Parameters:
-        value (int): The new x-coordinate of the top-left corner of the rectangle.
-        """
-        self.__x = value
+    def x(self, x):
+        """Sets the x-coordinate of the rectangle."""
+        if x < 0:
+            raise ValueError("X-coordinate must be non-negative.")
+        self._x = x
 
     @property
     def y(self):
-        """
-        Gets the y-coordinate of the top-left corner of the rectangle.
-
-        Returns:
-        int: The y-coordinate of the top-left corner of the rectangle.
-        """
-        return self.__y
+        """Gets the y-coordinate of the rectangle."""
+        return self._y
 
     @y.setter
-    def y(self, value):
-        """
-        Sets the y-coordinate of the top-left corner of the rectangle.
+    def y(self, y):
+        """Sets the y-coordinate of the rectangle."""
+        if y < 0:
+            raise ValueError("Y-coordinate must be non-negative.")
+        self._y = y
 
-        Parameters:
-        value (int): The new y-coordinate of the top-left corner of the rectangle.
-        """
-        self.__y = value
-        
+
+
     #  2. Validate attributes
+    
         
         from models.base import Base
 
