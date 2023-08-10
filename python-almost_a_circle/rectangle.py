@@ -18,6 +18,32 @@ class Rectangle(Base):
     x (int): The x-coordinate of the top-left corner of the rectangle.
     y (int): The y-coordinate of the top-left corner of the rectangle.
     """
+    
+    """
+A class to represent a rectangle.
+
+This class has the following public methods:
+
+* width: Gets the width of the rectangle.
+* width: Sets the width of the rectangle.
+* height: Gets the height of the rectangle.
+* height: Sets the height of the rectangle.
+* x: Gets the x-coordinate of the rectangle.
+* x: Sets the x-coordinate of the rectangle.
+* y: Gets the y-coordinate of the rectangle.
+* y: Sets the y-coordinate of the rectangle.
+
+To create a new rectangle, you can use the following syntax:
+
+```python
+rectangle = Rectangle(width=10, height=20, x=0, y=0)
+
+
+The `width`, `height`, `x`, and `y` arguments are optional. If they are not specified, the default values will be used.
+
+The `Rectangle` class can be used to represent a rectangle in your code. You can use the public methods of the class to get and set the attributes of the rectangle.
+"""
+
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """
