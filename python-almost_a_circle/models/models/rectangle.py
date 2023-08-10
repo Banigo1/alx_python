@@ -1,5 +1,6 @@
-# models/rectangle.py
-# 1. First Rectangle
+
+# Python - Almost a circle - # 1. First Rectangle Project only
+
 """
 A class to represent a rectangle.
 
@@ -13,16 +14,7 @@ This class has the following public methods:
 * x: Sets the x-coordinate of the rectangle.
 * y: Gets the y-coordinate of the rectangle.
 * y: Sets the y-coordinate of the rectangle.
-
-To create a new rectangle, you can use the following syntax:
-
-```python
-rectangle = Rectangle(width=10, height=20, x=0, y=0)
-
-
-The `width`, `height`, `x`, and `y` arguments are optional. If they are not specified, the default values will be used.
-
-The `Rectangle` class can be used to represent a rectangle in your code. You can use the public methods of the class to get and set the attributes of the rectangle.
+ 
 """
 
 from models.base import Base
