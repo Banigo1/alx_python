@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-from sys import argv
-if __name__ == "__main__":
- def print_args(arg):
-  """Prints the number of and the list of its arguments."""
-  args = arg.argv
-  num_args = len(args)
-
-  print("Number of arguments:", num_args)
-  print("List of arguments:")
-  for arg in args:
-    print("  ", arg)
-  print_args()
+#!/usr/bin/python3
+if __name__ == '__main__':
+    from calculator_1 import add, sub, mul, div
+    a = 10
+    b = 5
+    print("{} + {} = {}".format(a, b, add(a, b)))
+    print("{} - {} = {}".format(a, b, sub(a, b)))
+    print("{} * {} = {}".format(a, b, mul(a, b)))
+    print("{} / {} = {}".format(a, b, div(a, b)))
