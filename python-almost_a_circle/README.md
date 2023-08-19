@@ -1,8 +1,8 @@
-# Python - Almost a circle Project
+# Python - Almost a circle
  ## By: Guillaume, CTO at Holberton School
  ## Weight: 5
 
- In this project, we I reviewed everything about Python:
+ In this project, I reviewed almost everything about Python:
 
 Import
 Exceptions
