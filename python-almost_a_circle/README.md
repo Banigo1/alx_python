@@ -15,7 +15,7 @@ Inheritance
 Unittest
 Read/Write file
 
-### and also learn about:
+### and also learnt about:
 args and kwargs
 Serialization/Deserialization
 JSON
