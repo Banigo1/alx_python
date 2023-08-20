@@ -1,10 +1,15 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
-if __name__ == '__main__':
-    from calculator_1 import add, sub, mul, div
-    a = 10
-    b = 5
-    print("{} + {} = {}".format(a, b, add(a, b)))
-    print("{} - {} = {}".format(a, b, sub(a, b)))
-    print("{} * {} = {}".format(a, b, mul(a, b)))
-    print("{} / {} = {}".format(a, b, div(a, b)))
+
+if __name__ == "__main__":
+    import sys
+    argvlen = len(sys.argv)
+    if argvlen == 1:
+        print("0 arguments.")
+    elif argvlen == 2:
+        print("1 argument:")
+    elif argvlen > 2:
+        print("{} arguments:".format(len(sys.argv) - 1))
+
+    for num, element in enumerate(sys.argv):
+        if num > 0:
+            print("{}: {}".format(num, element))
