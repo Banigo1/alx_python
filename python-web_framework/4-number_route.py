@@ -4,12 +4,12 @@ This script creates a Flask web application that listens on
 It has five routes:
 /, /hbnb, /c/<text>, /python/(<text>), and /number/<n>, which display
 "Hello HBNB!", "HBNB", "C" followed by the value of the text variable
-(with underscores replaced by spaces), 
+(with underscores replaced by spaces),
 "Python" followed by the value of the text variable
-(with underscores replaced by spaces), and "n is a number" 
+(with underscores replaced by spaces), and "n is a number"
 if n is an integer, respectively.
 The default value of text for the /python/(<text>) route is "is cool".
-The option strict_slashes=False is used in the 
+The option strict_slashes=False is used in the
 route definitions to allow for URLs with or without a trailing slash.
 
 """
@@ -36,6 +36,7 @@ def c_text(text):
 @app.route('/python/<text>', strict_slashes=False)
 def python_text(text):
     return 'Python %s' % text.replace('_', ' ')
+
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def number_n(n):
