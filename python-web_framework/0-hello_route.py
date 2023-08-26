@@ -1,7 +1,7 @@
 """
 This module implements a Flask web application.
 
-The web application listens on 
+The web application listens on
 0.0.0.0, port 5000 and provides the following 
 routes:
 - /: Displays "Hello HBNB!"
@@ -19,7 +19,6 @@ from flask import Flask
 app = Flask(__name__)
 
 # Define a route for the root URL ("/")
-
 @app.route('/', strict_slashes=False)
  
 def hello_hbnb():
