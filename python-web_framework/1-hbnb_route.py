@@ -1,16 +1,16 @@
 """
-This module implements a Flask web application.
+This script creates a Flask web application that listens on 0.0.0.0, port 5000. 
+It has two routes: / and /hbnb, which display 
+"Hello HBNB!" and 
+"HBNB", respectively. 
+The option strict_slashes=False is used in the 
+route definitions to allow for URLs with or without a trailing slash. 
+Is there anything else you would like to know? 😊
 
-The web application listens on
-0.0.0.0, port 5000 and provides the following
-routes:
-- /: Displays "Hello HBNB!"
-    /hbnb: display “HBNB”
 
 Usage:
     To start the web application,
-    run this module directly:
-        $ python app.py
+    run this module directly.
 
 """
 
