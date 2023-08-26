@@ -6,9 +6,9 @@ It has four routes:
 "Hello HBNB!", "HBNB", "C" followed by the value of the text variable
 (with underscores replaced by spaces), and "Python"
 followed by the value of the text variable
-(with underscores replaced by spaces), respectively. 
-The default value of text for the /python/(<text>) route is "is cool". 
-The option strict_slashes=False is used in the route definitions 
+(with underscores replaced by spaces), respectively.
+The default value of text for the /python/(<text>) route is "is cool".
+The option strict_slashes=False is used in the route definitions
 to allow for URLs with or without a trailing slash.
 
 
