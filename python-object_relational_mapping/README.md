@@ -10,6 +10,7 @@
 * How to INSERT rows in a MySQL table from a Python script 
 * How to map a Python Class to a MySQL table
 * What ORM means
+* Parameterized query 
 ## Background Context
 
 In this project, MySQL server is in 8.1. I linked two amazing worlds: Databases and Python!
@@ -81,28 +82,6 @@ Indeed, all of them have the same type of syntax, but not always.
 
 ### [9. Contains `a`](./9-model_state_filter_a.py)
 * Write a script that lists all State objects that contain the letter a from the database hbtn_0e_6_usa 
-
-
-### [10. Get a state](./10-model_state_my_get.py)
-* Write a script that prints the State object with the name passed as argument from the database hbtn_0e_6_usa 
-
-
-### [11. Add a new state](./11-model_state_insert.py)
-* Write a script that adds the State object “Louisiana” to the database hbtn_0e_6_usa 
-
-
-### [12. Update a state](./12-model_state_update_id_2.py)
-* Write a script that changes the name of a State object from the database hbtn_0e_6_usa 
-
-
-### [13. Delete states](./13-model_state_delete_a.py)
-* Write a script that deletes all State objects with a name containing the letter a from the database hbtn_0e_6_usa 
-
-
-### [14. Cities in state](./model_city.py)
-* Write a Python file similar to model_state.py named model_city.py that contains the class definition of a City.
-
----
 
 ## Author
 *[Precious Banigo](https://github.com/banigo1)
