@@ -5,7 +5,7 @@ The web application listens on 0.0.0.0, port 5000
 and has just one route:
 
     /: display "Hello HBNB!"
-    
+
 The option strict_slashes=False is used in the route definition
 
 Usage:
