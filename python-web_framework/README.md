@@ -1,16 +1,13 @@
 # Python - Web framework
 
 ## Flask
- ## Master
  ### By: Guillaume Salva, CTO at Holberton School
 
-## What are web application frameworks?
+## What are Aeb Application Frameworks?
 
 ‘web application frameworks’ or ‘web frameworks’ is  “a software framework that is designed to support the development of web applications including web services, web resources and web APIs”. In simple words, web frameworks are a piece of software that offers a way to create and run web applications. Thus, you don’t need to code on your own and look for probable miscalculations and faults.
 
-## What is the difference between a CMS and a framework?
-
-Many find it difficult to differentiaite the web app framework from CMS (Content Management System). 
+## Difference Between a CMS (Content Management System) and a Framework?
 
 When you are building a website or a web app, the first thing you need is tools. You can create from scratch but not everyone is proficient in programming languages. CMS, in this case, relieves the stress of the need to have such expertise, meanwhile frameworks offer a set of features that you can use to create a custom application.
 
