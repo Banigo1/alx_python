@@ -1,15 +1,17 @@
 """
 This script implements a Flask web application that listens on
 0.0.0.0, port 5000.
+
 It has four routes:
-/, /hbnb, /c/<text>, and /python/(<text>), which display
-"Hello HBNB!", "HBNB", "C" followed by the value of the text variable
-(with underscores replaced by spaces), and "Python"
-followed by the value of the text variable
-(with underscores replaced by spaces), respectively.
-The default value of text for the /python/(<text>) route is "is cool".
-The option strict_slashes=False is used in the route definitions
-to allow for URLs with or without a trailing slash.
+
+    /, /hbnb, /c/<text>, and /python/(<text>), which display
+    "Hello HBNB!", "HBNB", "C" followed by the value of the text variable
+    (with underscores replaced by spaces), and "Python"
+    followed by the value of the text variable
+    (with underscores replaced by spaces), respectively.
+    The default value of text for the /python/(<text>) route is "is cool".
+    The option strict_slashes=False is used in the route definitions
+    to allow for URLs with or without a trailing slash.
 
 
 Usage:
