@@ -5,17 +5,18 @@ This script starts a Flask web application that listens on
 
 It has the following routes:
 
-/: displays “Hello HBNB!”
-/hbnb: displays “HBNB”
-/c/<text>: displays "C ", followed by the value of the text variable
-(replace underscore _ symbols with a space)
-/python/(<text>): displays "Python ",
-followed by the value of the text variable
-(replace underscore _ symbols with a space).
-The default value of text is “is cool”.
-/number/<n>: displays “n is a number” only if n is an integer.
-/number_template/<n>: displays an HTML page only if n is an integer,
-with an H1 tag containing “Number: n” inside the BODY tag.
+    /: display “Hello HBNB!”
+    /hbnb: display “HBNB”
+    /c/<text>: display “C ”, followed by the value of the text variable
+    (replace underscore _ symbols with a space )
+    /python/(<text>): display “Python ”,
+    followed by the value of the text variable
+    (replace underscore _ symbols with a space )
+        The default value of text is “is cool”
+    /number/<n>: display “n is a number” only if n is an integer
+    /number_template/<n>: display a HTML page only if n is an integer:
+    H1 tag: “Number: n” inside the BODY tag.
+    
 The option strict_slashes=False is used in all
 route definitions to allow for trailing slashes in the URLs.
 
