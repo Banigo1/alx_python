@@ -1,14 +1,13 @@
 """
 This module implements a Flask web application.
 
-The web application listens on
-0.0.0.0, port 5000 and provides the following
-routes:
+The web application listens on 0.0.0.0, port 5000
+and provides the following routes:
 
-/: display “Hello HBNB!”
-/hbnb: display “HBNB”
-/c/<text>: display “C ” followed by the value of the text variable
-(replace underscore _ symbols with a space )
+    /: display “Hello HBNB!”
+    /hbnb: display “HBNB”
+    /c/<text>: display “C ” followed by the value of the text variable
+    (replace underscore _ symbols with a space )
 
 
 Usage:
