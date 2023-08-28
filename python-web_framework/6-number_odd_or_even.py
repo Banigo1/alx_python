@@ -66,7 +66,8 @@ def number_odd_or_even(n):
         result = 'even'
     else:
         result = 'odd'
-    return '<html><body><h1>Number: {} is {}</h1></body></html>'.format(n, result)
+    return '<html><body><h1>Number: {} is {}</h1></body></html>'.format(
+    n, result)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
