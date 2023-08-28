@@ -1,13 +1,21 @@
 #!/usr/bin/python3
 
-""" LIKE TASK 2 BUT MORE SECURE, SO USE THIS WAY: 
-""
-This script takes in arguments and displays all values in the states table of hbtn_0e_0_usa
-where name matches the argument.
-"""
-#!/usr/bin/python3
-"""
-This script takes in arguments and displays all values in the states table of hbtn_0e_0_usa where name matches the argument.
+""" 
+This script uses the MySQLdb module to connect to a MySQL server running on localhost at port 3306.
+It takes four arguments:
+
+    mysql username,
+    mysql password,
+    database name, and
+    state name searched. 
+
+The script is safe from MySQL injections because it uses parameterized queries to pass the state name to the SELECT statement.
+
+The results are sorted in ascending order by states.id.
+
+The code is not executed when imported because it is placed inside an 
+if __name__ == "__main__": block.
+
 """
 
 import MySQLdb
