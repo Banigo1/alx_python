@@ -1,15 +1,18 @@
 """
-This module implements a Flask web application.
+This script starts a Flask web application.
 
-The web application listens on
-0.0.0.0, port 5000 and provides the following
-routes:
-- /: Displays "Hello HBNB!"
+The web application listens on 0.0.0.0, port 5000
+and has just one route:
+
+    /: display "Hello HBNB!"
+    
+The option strict_slashes=False is used in the route definition
 
 Usage:
+
     To start the web application,
-    run this module directly:
-        $ python app.py
+    run this module directly
+     $ python app.py
 
 """
 
