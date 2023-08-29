@@ -16,8 +16,10 @@ password (str): The password for the MySQL database.
 database (str): The name of the MySQL database.
 state_name (str): The name of the state to retrieve data for.
 
-It connects to the `mydb` database using the `myuser` username and `mypass` password,
-and retrieves data for the state of California from the `states` table.
+It connects to the `mydb` database using the `myuser` username
+and `mypass` password, and retrieves data for the
+state of California from the `states` table.
+
 The results are sorted in ascending order by states.id.
 
 The script is safe from MySQL injections because it uses
@@ -51,10 +53,10 @@ if __name__ == "__main__":
                          passwd=sys.argv[2],
                          db=sys.argv[3]
                          )
-    
+
     # Create a cursor object
     cur = db.cursor()
-    
+
     # Execute a SQL query to selct data from the `states` table
     cur.execute("SELECT id,\
                 name FROM states WHERE name = '{}'\
@@ -62,13 +64,13 @@ if __name__ == "__main__":
 
     # Fetch all rows returned by the query
     rows = cur.fetchall()
-    
+
     # loop over each row
     for r in rows:
-        
+
         # Check if the value in the second column
         # (the `name` column) matches the provided state name
         if r[1] == sys.argv[4]:
-            
+
             # Print the entire row
-            print(r)
+          print(r)
