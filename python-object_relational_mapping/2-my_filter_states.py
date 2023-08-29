@@ -36,46 +36,21 @@ The code is not executed when imported because it is placed inside an
 if __name__ == "__main__": block.
 
 """
+#!/usr/bin/python3
+""" script that takes in an argument and displays all values in the states...
+    ...table of hbtn_0e_0_usa where name matches the argument. """
 
-import MySQLdb
-import sys
-
-def search_states(username, password, database, state_name):
-    # Connect to the MySQL server
-    conn = MySQLdb.connect(
-        host='localhost',
-        port=3306,
-        user=username,
-        passwd=password,
-        db=database
-    )
-
-    # Create a cursor object to execute SQL queries
-    cur = conn.cursor()
-    
-    # Create the SQL query using user input
-    query = "SELECT * FROM states WHERE LOWER(name) = LOWER('{}') ORDER BY id ASC".format(state_name)
-    
-    # Execute the query
-    cur.execute(query)
-    
-    # Fetch all rows from the result set
-    results = cur.fetchall()
-    
-    # Print the fetched rows
-    for row in results:
-        print(row)
-    
-    # Close the cursor and connection
-    cur.close()
-    conn.close()
 
 if __name__ == "__main__":
-    # Get the command-line arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
-    
-    # Call the search_states function with the provided arguments
-    search_states(username, password, database, state_name)
+    from sys import argv
+    import MySQLdb
+    conn = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
+    cur = conn.cursor()
+    cur.execute("""SELECT * FROM states WHERE name='{}'
+                COLLATE Latin1_General_CS ORDER BY
+                id ASC""".format(argv[4]))
+    query_rows = cur.fetchall()
+    for row in query_rows:
+        print(row)
+    cur.close()
+    conn.close()
