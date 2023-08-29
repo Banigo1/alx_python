@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 """ 
-This script uses the MySQLdb module to connect to a MySQL server running on localhost at port 3306.
+This script uses the MySQLdb module to connect to a
+MySQL server running on localhost at port 3306.
 
 It takes four arguments:
 
@@ -42,9 +43,14 @@ if __name__ == "__main__":
     database = argv[3]
     state_name = argv[4]
 
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
+    db = MySQLdb.connect(host="localhost", 
+                         port=3306, 
+                         user=username, 
+                         passwd=password, 
+                         db=database)
     cur = db.cursor()
-    query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC".format(state_name)
+    query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC".format(
+            state_name, 4)
     cur.execute(query)
     rows = cur.fetchall()
     for row in rows:
