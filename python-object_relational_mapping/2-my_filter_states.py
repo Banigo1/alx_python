@@ -1,16 +1,23 @@
-#!/usr/bin/python3
-
 """
 This script uses the MySQLdb module to connect
-to a MySQL server running on localhost at port 3306.
+to a MySQL database and retrieves data from the `states` table.
+
+Usage:
+python script.py
+[username]
+[password]
+[database]
+[state_name]
 
 It takes four arguments:
 
-    mysql username,
-    mysql password,
-    database name, and
-    state name searched.
+username (str): The username for the MySQL database.
+password (str): The password for the MySQL database.
+database (str): The name of the MySQL database.
+state_name (str): The name of the state to retrieve data for.
 
+It connects to the `mydb` database using the `myuser` username and `mypass` password,
+and retrieves data for the state of California from the `states` table.
 The results are sorted in ascending order by states.id.
 
 The script is safe from MySQL injections because it uses
@@ -39,13 +46,29 @@ if __name__ == "__main__": block.
 import MySQLdb
 import sys
 if __name__ == "__main__":
-    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    # connect to the MySQL database using provided arguments
+    db = MySQLdb.connect(user=sys.argv[1],
+                         passwd=sys.argv[2],
+                         db=sys.argv[3]
+                         )
+    
+    # Create a cursor object
     cur = db.cursor()
+    
+    # Execute a SQL query to selct data from the `states` table
     cur.execute("SELECT id,\
                 name FROM states WHERE name = '{}'\
                 ORDER BY id ASC".format(sys.argv[4]))
 
+    # Fetch all rows returned by the query
     rows = cur.fetchall()
+    
+    # loop over each row
     for r in rows:
+        
+        # Check if the value in the second column
+        # (the `name` column) matches the provided state name
         if r[1] == sys.argv[4]:
+            
+            # Print the entire row
             print(r)
