@@ -26,7 +26,7 @@ the query plan is constructed on the server before the query
 is executed with parameter values.
 This means that the structure of the query is fixed and
 cannot be altered by user input, making it much more difficult
-for an attacker to inject malicious code into the query. 
+for an attacker to inject malicious code into the query.
 Additionally, using parameterized queries can also improve performance,
 as the database can cache the query plan and reuse it
 for subsequent executions with different parameter values.
@@ -46,10 +46,10 @@ if __name__ == "__main__":
     database = argv[3]
     state_name = argv[4]
 
-    db = MySQLdb.connect(host="localhost", 
-                         port=3306, 
-                         user=username, 
-                         passwd=password, 
+    db = MySQLdb.connect(host="localhost",
+                         port=3306,
+                         user=username,
+                         passwd=password,
                          db=database)
     cur = db.cursor()
     query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC".format(
