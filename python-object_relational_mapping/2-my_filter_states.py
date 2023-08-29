@@ -54,10 +54,7 @@ def search_states(username, password, database, state_name):
     cur = conn.cursor()
     
     # Create the SQL query using user input
-    
-    query_ = "SELECT id, name FROM states WHERE BINARY name ='{}' \
-              ORDER BY states.id ASC".format(argv[4])
-    
+    query = "SELECT * FROM states WHERE LOWER(name) = LOWER'{}' ORDER BY id ASC".format(state_name)
     
     # Execute the query
     cur.execute(query)
