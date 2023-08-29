@@ -36,46 +36,16 @@ The code is not executed when imported because it is placed inside an
 if __name__ == "__main__": block.
 
 """
-
 import MySQLdb
 import sys
-
-def search_states(username, password, database, state_name):
-    # Connect to the MySQL server
-    conn = MySQLdb.connect(
-        host='localhost',
-        port=3306,
-        user=username,
-        passwd=password,
-        db=database
-    )
-
-    # Create a cursor object to execute SQL queries
-    cur = conn.cursor()
-    
-    # Create the SQL query using user input
-    query = "SELECT * FROM states WHERE LOWER(name) = LOWER'{}' ORDER BY id ASC".format(state_name)
-    
-    # Execute the query
-    cur.execute(query)
-    
-    # Fetch all rows from the result set
-    results = cur.fetchall()
-    
-    # Print the fetched rows
-    for row in results:
-        print(row)
-    
-    # Close the cursor and connection
-    cur.close()
-    conn.close()
-
 if __name__ == "__main__":
-    # Get the command-line arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
-    
-    # Call the search_states function with the provided arguments
-    search_states(username, password, database, state_name)
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    cur = db.cursor()
+    cur.execute("SELECT id,\
+                name FROM states WHERE name = '{}'\
+                ORDER BY id ASC".format(sys.argv[4]))
+
+    rows = cur.fetchall()
+    for r in rows:
+        if r[1] == sys.argv[4]:
+            print(r)
