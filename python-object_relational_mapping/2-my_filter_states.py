@@ -24,8 +24,9 @@ The main advantage of using parameterized queries is to avoid SQL
 injection attacks. By using placeholders for parameters,
 the query plan is constructed on the server before the query
 is executed with parameter values.
-This means that the structure of the query is fixed and cannot be altered by user input, 
-making it much more difficult for an attacker to inject malicious code into the query. 
+This means that the structure of the query is fixed and
+cannot be altered by user input, making it much more difficult
+for an attacker to inject malicious code into the query. 
 Additionally, using parameterized queries can also improve performance,
 as the database can cache the query plan and reuse it
 for subsequent executions with different parameter values.
