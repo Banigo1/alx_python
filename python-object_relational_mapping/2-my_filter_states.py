@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
-""" 
-This script uses the MySQLdb module to connect to a
-MySQL server running on localhost at port 3306.
+"""
+This script uses the MySQLdb module to connect
+to a MySQL server running on localhost at port 3306.
 
 It takes four arguments:
 
@@ -17,19 +17,21 @@ The script is safe from MySQL injections because it uses
 parameterized queries to pass the state name to the SELECT statement.
 
 A parameterized query is a type of SQL query in
-which placeholders are used for parameters, 
+which placeholders are used for parameters,
 and the parameter values are supplied at execution time.
 
 The main advantage of using parameterized queries is to avoid SQL
-injection attacks. By using placeholders for parameters, 
-the query plan is constructed on the server before the query is executed with parameter values.
+injection attacks. By using placeholders for parameters,
+the query plan is constructed on the server before the query
+is executed with parameter values.
 This means that the structure of the query is fixed and cannot be altered by user input, 
 making it much more difficult for an attacker to inject malicious code into the query. 
 Additionally, using parameterized queries can also improve performance,
-as the database can cache the query plan and reuse it for subsequent executions with different parameter values.
+as the database can cache the query plan and reuse it
+for subsequent executions with different parameter values.
 
 
-The code is not executed when imported because it is placed inside an 
+The code is not executed when imported because it is placed inside an
 if __name__ == "__main__": block.
 
 """
