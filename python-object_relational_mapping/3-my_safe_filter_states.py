@@ -33,4 +33,3 @@ if __name__ == "__main__":
     for r in rows:
         # print all result
         print(r)
-        
