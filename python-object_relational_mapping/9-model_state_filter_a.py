@@ -27,9 +27,9 @@ if __name__ == "__main__":
     # Retrieve all State objects that contain the letter 'a' and sort them by id
     states = session.query(State).filter(State.name.like('%a%')).order_by(State.id).all()
 
-    # Print the results
-    for state in states:
-        print(state.name)
+    # Print the results in the expected format
+    for index, state in enumerate(states, start=1):
+        print(f"{index}: {state.name}")
 
     # Close the session
     session.close()
