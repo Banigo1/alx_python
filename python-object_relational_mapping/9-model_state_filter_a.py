@@ -1,32 +1,25 @@
 #!/usr/bin/python3
-"""List all State objects that contain the letter 'a' from the database hbtn_0e_6_usa."""
+"""
+this script lists all states containing 'a' from hbtn_0e_6_usa
+using SQLAlchemy
+"""
+
 
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
-
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Usage: {} <username> <password><database>".format(sys.argv[0]))
-        sys.exit(1)
-
-    username, password, database = sys.argv[1], sys.argv[2], sys.argv[3]
-
-    # Create a MySQL database connection
-    db_url = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(username, password, database)
-    engine = create_engine(db_url)
-
-    # Create a session to interact with the database
-    Session = sessionmaker(bind=engine)
-    session = Session()
-
-    # Query the database for State objects containing 'a' and sort by states.id
-    states_with_a = session.query(State).filter(State.name.like('%a%')).order_by(State.id)
-
-    # Print the results in the specified format
-    for state in states_with_a:
-        print("{}: {}".format(state.id, state.name))
-
-    # Close the session
-    session.close()
+        print("Usage: username password database name")
+    else:
+        engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format
+                               (sys.argv[1], sys.argv[2], sys.argv[3]))
+        Base.metadata.create_all(engine)
+        Session = sessionmaker(bind=engine)
+        session = Session()
+        for state in session.query(State.id, State.name).filter(
+                State.name.ilike('%a%')).order_by(State.id):
+            print("{:d}: {:s}".format(state[0], state[1]))
+        session.close()
+        engine.dispose()
