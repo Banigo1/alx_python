@@ -1,19 +1,13 @@
-def update_dictionary(a_dictionary, key, value):
-    # Check if the key exists in the dictionary
-    if key in a_dictionary:
-        # If the key exists, replace the existing value
-        a_dictionary[key] = value
-    else:
-        # If the key doesn't exist, add a new key-value pair
-        a_dictionary[key] = value
+#!/usr/bin/python3
+def common_elements(set_1, set_2):
 
-# Example usage:
-my_dict = {'a': 1, 'b': 2, 'c': 3}
+    result = []  # empty list
+    for element in set_1:  # checks all chars of set 1
+        if element in set_2:  # checks all chars of set 2
+            result.append(element)  # add matching chars (C) and
+    return result                   # adds/appends to result which is returned
 
-# Update an existing key's value
-update_dictionary(my_dict, 'b', 42)
-print(my_dict)  # Output: {'a': 1, 'b': 42, 'c': 3}
-
-# Add a new key-value pair
-update_dictionary(my_dict, 'd', 99)
-print(my_dict)  # Output: {'a': 1, 'b': 42, 'c': 3, 'd': 99}
+#  Below also works in 1 line of code: not positive which and operator works
+#  return set_1 && set_2 OR return set_1 and set_2
+#  Below also works in 1 line of code
+#  return set_1.intersection(set_2)
