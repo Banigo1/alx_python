@@ -17,8 +17,8 @@ if __name__ == '__main__':
     database_name = sys.argv[3]
 
     # Create the connection URL
-    connection_url = f'mysql+mysqldb://{mysql_username}:{mysql_password}@localhost:3306/{
-        database_name}'
+    connection_url = f'mysql+mysqldb://{mysql_username}:{mysql_password
+    }@localhost:3306/{database_name}'
 
     # Create the engine and session
     engine = create_engine(connection_url)
@@ -26,8 +26,8 @@ if __name__ == '__main__':
     session = Session()
 
     # Query the database for State objects containing the letter 'a'
-    query = session.query(State).filter(State.name.like('%a%')).order_by(State.id
-                                                                         ).all()
+    query = session.query(State).filter(State.name.like('%a%')).order_by(
+        State.id).all()
 
     # Print the results
     for state in query:
