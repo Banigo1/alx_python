@@ -1,7 +1,6 @@
+# Square class that defines a square.
 class Square:
     """
-    Square class that defines a square.
-
     Attributes:
         __size (int): The size of the square.
 
