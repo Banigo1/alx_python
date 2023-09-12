@@ -4,5 +4,5 @@
 
 - map
 - Lambda, 
-- filter, 
-- reduce and 
+- filter, and
+- reduce
