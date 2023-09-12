@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-""" This module contains an empty class, Square that defines a square by:
-Private instance attribute: size
-Instantiation with size (no type/value verification)
-
+""" This module contains an empty class named Square,
+that defines a square by a
+private instance attribute: size
 """
 class Square:
     
