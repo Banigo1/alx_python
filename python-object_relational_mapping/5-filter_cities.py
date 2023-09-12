@@ -18,3 +18,4 @@ if __name__ == "__main__":
     print(', '.join(cities_print))  # output format desired by task description
     cur.close()
     conn.close()
+
