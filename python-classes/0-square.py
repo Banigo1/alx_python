@@ -25,21 +25,3 @@ class Square:
             size (int): The size of the square.
         """
         self.__size = size
-
-    def get_size(self):
-        """
-        Get the size of the square.
-
-        Returns:
-            int: The size of the square.
-        """
-        return self.__size
-
-    def set_size(self, size):
-        """
-        Set the size of the square.
-
-        Args:
-            size (int): The new size of the square.
-        """
-        self.__size = size
