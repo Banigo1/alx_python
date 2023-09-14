@@ -19,12 +19,4 @@ class Square:
 
     def __init__(self, size):
        
-        self.__size = size 
-
-    # def get_size(self): # This method returns the value of the _size attribute
-      
-    #     return self.__size
-
-    # def set_size(self, size): # This method sets the value of the _size attribute.
-       
-    #     self.__size = size
+       # self.__size = size 
