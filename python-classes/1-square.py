@@ -9,7 +9,7 @@ ValueError exception with the message size must be >= 0
 
 class Square:
     """
-    The Square class
+    This class defines a square.
 
     Attributes:
         __size (int): The size of the square.

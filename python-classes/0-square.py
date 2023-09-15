@@ -7,7 +7,7 @@ private instance attribute: size
 class Square:
     
     """
-    A class that defines a square.
+    This class defines a square.
 
     Private instance attribute:
         __size (int): The size of the square.

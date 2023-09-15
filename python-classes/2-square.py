@@ -6,11 +6,9 @@ message size must be an integer. If size is less than 0, raise a
 ValueError exception with the message size must be >= 0
 
 """
-
-
 class Square:
     """
-    The Square class
+    This class defines a square.
 
     Attributes:
         __size (int): The size of the square.
