@@ -1,3 +1,12 @@
+"""
+    This function checks if an object is an instance of a class that inherited 
+    (directly or indirectly) from the specified class.
+
+    Parameters:
+    obj (object): The object to check.
+    a_class (class): The class to check against.
+    
+"""
 def inherits_from(obj, a_class):
     """
     This function checks if an object is an instance of a class that inherited 
