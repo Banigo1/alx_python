@@ -1,3 +1,25 @@
+
+"""
+     A class used to represent a Rectangle
+
+    ...
+
+    Attributes
+    ----------
+    width : int
+        the width of the rectangle
+    height : int
+        the height of the rectangle
+
+    Methods
+    -------
+    area():
+        Returns the area of the rectangle
+    integer_validator(name, value):
+        Validates that the value is a positive integer
+        
+"""
+
 class Rectangle:
     """
     A class used to represent a Rectangle
