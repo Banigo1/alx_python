@@ -1,7 +1,10 @@
 #!/usr/bin/python3
-"""This module defines a class BaseGeometry
+
+"""
+This module defines a class BaseGeometry
 with a public instance method:
 def area(self): that raises an Exception.
+
 """
 class BaseGeometry():
     """Class BaseGeometry.
@@ -9,8 +12,8 @@ class BaseGeometry():
     not implemented yet.
 
     """
-    def __init__(self):
-         pass
+    # def __init__(self):
+    #      pass
 
     def area(self):
         """
