@@ -1,19 +1,7 @@
 #!/usr/bin/python3
-"""This module has a class and a public
-instance method Public instance method:
+"""This module defines a class BaseGeometry
+with a public instance method:
 def area(self): that raises an Exception.
-
-
-BaseGeometry = __import__('4-base_geometry').BaseGeometry
-
-try:
-    print(bg.area())
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
-
-guillaume@ubuntu:~/$ python3 4-main.py
-[Exception] area() is not implemented
-guillaume@ubuntu:~/$ 
 """
 class BaseGeometry():
     """Class BaseGeometry.
@@ -25,4 +13,11 @@ class BaseGeometry():
     #     pass
 
     def area(self):
+        """
+        Calculate the area of the geometric shape (not implemented).
+
+        Raises:
+            Exception: This method is not implemented in the base class.
+        
+        """
         raise Exception("area() is not implemented")
