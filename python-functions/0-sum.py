@@ -1,5 +1,8 @@
-#! /usr/bin/python3
-# Sum function
+def random_func(name: str, age: int, weight: float) -> str:
+        print("Name :", name)
+        print("Age :", age)
+        print("Weight :", weight)
+    
+        return "{} is {} years old and weighs {}".format(name, age, weight)
 
-def add(a, b):
-    return a + b
+print(random_func("Derek", 30, 80))
