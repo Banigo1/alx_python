@@ -96,4 +96,4 @@ class Rectangle(BaseGeometry):
         """
         Returns a formatted string representation of the Rectangle's dimensions.
         """
-        return f"Rectangle(width={self._Rectangle__width}, height={self._Rectangle__height})"
+        return f"Rectangle(width={self.width}, height={self.height})"
