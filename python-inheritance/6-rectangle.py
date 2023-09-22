@@ -81,19 +81,19 @@ class BaseGeometry(metaclass=TypeMetaClass):
 
 class Rectangle(BaseGeometry):
     """
-    This is a sub-class of the base class
+    This is a sub-class of the baseclass
     """
     def __init__(self, width, height):
         """
-        Function sets the values width and height and ensures
+        function sets the values width and height and ensures
         """
         super().integer_validator("width", width)
-        self.width = width
+        self._Rectangle__width = width
         super().integer_validator("height", height)
-        self.height = height
+        self._Rectangle__height = height
 
     def __str__(self):
         """
         Returns a formatted string representation of the Rectangle's dimensions.
         """
-        return f"Rectangle(width={self.width}, height={self.height})" or "Rectangle (empty)"
+        return f"Rectangle(width={self._Rectangle__width}, height={self._Rectangle__height})"
