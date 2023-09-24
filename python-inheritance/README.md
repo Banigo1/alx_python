@@ -1,4 +1,4 @@
-# Python | Inheritance
+## Python | Inheritance
 
 Inheritance is a fundamental concept in object-oriented programming (OOP) that allows a class to inherit properties and behaviors from another class. The class that inherits from another class is called the `subclass` or `derived class,` and the class being inherited from is called the `superclass` or `base class.`
 
