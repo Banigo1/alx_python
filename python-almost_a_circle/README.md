@@ -2,7 +2,7 @@
  ## By: Guillaume, CTO at Holberton School
  ## Weight: 5
 
- In this project, I reviewed almost everything about Python:
+ ### In this project, I reviewed almost everything about Python:
 
 - Import
 - Exceptions
@@ -15,7 +15,7 @@
 - Unittest
 - Read/Write file
 
-### and also learnt about:
+### and I also learnt about:
 - args and kwargs
 - Serialization/Deserialization
 - JSON
