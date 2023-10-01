@@ -32,8 +32,9 @@ def todo_list_progress(employee_id):
 
 # Test the function with an example employee ID
 todo_list_progress(1)
-import requests
 import csv
+import requests
+
 
 def todo_list_progress(employee_id):
     # Fetch user data
