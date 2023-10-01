@@ -1,68 +1,52 @@
+    """
+    This module would create a CSV file called 1.csv in the current directory,
+    containing the employee's TODO list items.
+    """
 import csv
 import requests
+import sys
 
-
-def todo_list_progress(employee_id):
-    # Fetch user data
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    user_data = requests.get(user_url).json()
-    employee_name = user_data['name']
-    username = user_data['username']
-
-    # Fetch TODO data
-    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
-    todos_data = requests.get(todos_url).json()
-
-    # Calculate progress
-    total_tasks = len(todos_data)
-    done_tasks = len([task for task in todos_data if task['completed']])
+# No execution of this file when imported
+if __name__ == "__main__":
     
-    # Display progress
-    print(f"Employee {employee_name} is done with tasks({done_tasks}/{total_tasks}):")
-    
-    # Display completed tasks and write to CSV
-    with open(f'{employee_id}.csv', 'w', newline='') as file:
+    # Pass employee id on command line
+    id = sys.argv[1]
+
+    # APIs 
+    userTodoURL = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+    userProfile = "https://jsonplaceholder.typicode.com/users/{}".format(id)
+
+    # Make requests on APIs
+    todoResponse = requests.get(userTodoURL)
+    profileResponse = requests.get(userProfile)
+
+    # Parse responses and store in variables
+    todoJson_Data = todoResponse.json()
+    profileJson_Data = profileResponse.json()
+
+    # Get employee information
+    employeeName = profileJson_Data['name']
+
+    # Count total and completed tasks
+    totalTasks = 0
+    completedTasks = 0
+
+    for data in todoJson_Data: # Each dict in variable data
+        for key, value in data.items():
+            if key == 'completed':
+                totalTasks += 1
+                if value == True:
+                    completedTasks += 1
+
+    print("Employee {} is done with "
+          "tasks({}/{}):".format(employeeName, completedTasks, totalTasks))
+
+    # Retrieve title of completed tasks and write to CSV file
+    with open('{}.csv'.format(id), 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-        
-        for task in todos_data:
-            if task['completed']:
-                print(f"\t {task['title']}")
-            writer.writerow([employee_id, username, task['completed'], task['title']])
-
-# Test the function with an example employee ID
-todo_list_progress(1)
-import csv
-import requests
-
-
-def todo_list_progress(employee_id):
-    # Fetch user data
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    user_data = requests.get(user_url).json()
-    employee_name = user_data['name']
-    username = user_data['username']
-
-    # Fetch TODO data
-    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
-    todos_data = requests.get(todos_url).json()
-
-    # Calculate progress
-    total_tasks = len(todos_data)
-    done_tasks = len([task for task in todos_data if task['completed']])
-    
-    # Display progress
-    print(f"Employee {employee_name} is done with tasks({done_tasks}/{total_tasks}):")
-    
-    # Display completed tasks and write to CSV
-    with open(f'{employee_id}.csv', 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-        
-        for task in todos_data:
-            if task['completed']:
-                print(f"\t {task['title']}")
-            writer.writerow([employee_id, username, task['completed'], task['title']])
-
-# Test the function with an example employee ID
-todo_list_progress(1)
+        for data in todoJson_Data: # Each dict in variable data
+            for key, value in data.items():
+                if key == 'completed' and value == True:
+                    writer.writerow([id, employeeName, value, data['title']])
+                    print("\t {}".format(data['title']))
