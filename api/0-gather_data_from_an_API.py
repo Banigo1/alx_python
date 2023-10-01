@@ -1,51 +1,49 @@
+"""
+This script uses an API to retrieve employee task information
+and display in a special format.
+
+It retrieves employees name, task completed with their titles.
+"""
 import requests
+import sys
 
-def get_employee_todo_list_progress(employee_id):
-    """Returns information about an employee's TODO list progress, given the employee ID."""
+# No execution of this file when imported
+if __name__ == "__main__":
+    
+# Pass employee id on command line
+    id = sys.argv[1]
 
-    # Get the employee details
-    employee_details_url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
-    employee_details_response = requests.get(employee_details_url)
-    employee_details = employee_details_response.json()
+# APIs 
+    userTodoURL = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+    userProfile = "https://jsonplaceholder.typicode.com/users/{}".format(id)
 
-    # Get the employee's TODO list items
-    todo_list_items_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
-    todo_list_items_response = requests.get(todo_list_items_url)
-    todo_list_items = todo_list_items_response.json()
+# Make requests on APIs
+    todoResponse = requests.get(userTodoURL)
+    profileResponse = requests.get(userProfile)
 
-    # Count the number of completed and non-completed tasks
-    completed_tasks = 0
-    non_completed_tasks = 0
-    for todo_list_item in todo_list_items:
-        if todo_list_item["completed"]:
-            completed_tasks += 1
-        else:
-            non_completed_tasks += 1
+# Parse responses and store in variables
+    todoJson_Data = todoResponse.json()
+    profileJson_Data = profileResponse.json()
 
-    # Calculate the TODO list progress percentage
-    todo_list_progress = completed_tasks / (completed_tasks + non_completed_tasks)
+#Get employee information
+    employeeName = profileJson_Data['name']
 
-    # Format the TODO list progress output
-    employee_name = employee_details["name"]
-    todo_list_progress_string = "Employee {} is done with {} tasks ({}/{}):".format(
-        employee_name,
-        completed_tasks,
-        todo_list_progress,
-        (completed_tasks + non_completed_tasks)
-    )
+# Count total and completed tasks
+    totalTasks = 0
+    completedTasks = 0
 
-    completed_task_titles = []
-    for todo_list_item in todo_list_items:
-        if todo_list_item["completed"]:
-            completed_task_titles.append(todo_list_item["title"])
+    for data in todoJson_Data: # Each dict in variable data
+        for key, value in data.items():
+            if key == 'completed':
+                totalTasks += 1
+                if value == True:
+                    completedTasks += 1
 
-    completed_task_titles_string = "\n".join(["\t\t{}".format(task_title) for task_title in completed_task_titles])
+    print("Employee {} is done with "
+    "tasks({}/{}):".format(employeeName, completedTasks, totalTasks))
 
-    return todo_list_progress_string + completed_task_titles_string
-
-# Get the employee TODO list progress from the user-specified employee ID
-employee_id = int(input("Enter the employee ID: "))
-todo_list_progress = get_employee_todo_list_progress(employee_id)
-
-# Print the employee TODO list progress to the standard output
-print(todo_list_progress)
+# Retrieve title of completed tasks
+    for data in todoJson_Data: # Each dict in variable data
+        for key, value in data.items():
+            if key == 'completed' and value == True:
+                print("\t {}".format (data['title']))
