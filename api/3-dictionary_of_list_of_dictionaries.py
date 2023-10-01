@@ -1,53 +1,32 @@
 import requests
 import json
-import sys
 
-def get_employee_info(employee_id):
-    # Endpoint URLs for employee details and TODO list
-    employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+def todo_list_progress():
+    # Fetch all user data
+    users_url = "https://jsonplaceholder.typicode.com/users"
+    users_data = requests.get(users_url).json()
 
-    # Fetch employee details
-    employee_response = requests.get(employee_url)
-    employee_data = employee_response.json()
-    user_id = employee_data['id']
-    username = employee_data['username']
+    all_users_tasks = {}
 
-    # Fetch TODO list
-    todos_response = requests.get(todos_url)
-    todos_data = todos_response.json()
+    for user_data in users_data:
+        employee_id = user_data['id']
+        username = user_data['username']
 
-    # Prepare JSON data
-    json_data = {
-        "USER_ID": [
-            {
-                "task": task['title'],
-                "completed": task['completed'],
-                "username": username
-            }
-            for task in todos_data
-        ]
-    }
+        # Fetch TODO data
+        todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+        todos_data = requests.get(todos_url).json()
 
-    # Display information (optional)
-    for task in json_data["USER_ID"]:
-        print(f"Task Title: {task['task']}, Completed: {task['completed']}")
+        # Prepare data for JSON export
+        tasks = []
+        
+        for task in todos_data:
+            tasks.append({"username": username, "task": task['title'], "completed": task['completed']})
+        
+        all_users_tasks[employee_id] = tasks
 
     # Write to JSON file
-    json_filename = f"{user_id}.json"
-    with open(json_filename, 'w') as jsonfile:
-        json.dump(json_data, jsonfile, indent=2)
+    with open('todo_all_employees.json', 'w') as file:
+        json.dump(all_users_tasks, file)
 
-    print(f"JSON file '{json_filename}' created successfully.")
-
-if __name__ == "__main__":
-    # Check for correct command line usage
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
-        sys.exit(1)
-
-    # Extract employee ID from command line argument
-    employee_id = int(sys.argv[1])
-
-    # Call the function to get employee info and export to JSON
-    get_employee_info(employee_id)
+# Test the function
+todo_list_progress()

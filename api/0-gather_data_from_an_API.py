@@ -1,33 +1,26 @@
 import requests
-import sys
 
-def get_employee_info(employee_id):
-    employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+def todo_list_progress(employee_id):
+    # Fetch user data
+    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+    user_data = requests.get(user_url).json()
+    employee_name = user_data['name']
+
+    # Fetch TODO data
     todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
-
-    # Fetch employee details
-    employee_response = requests.get(employee_url)
-    employee_data = employee_response.json()
-    employee_name = employee_data['name']
-
-    # Fetch TODO list
-    todos_response = requests.get(todos_url)
-    todos_data = todos_response.json()
+    todos_data = requests.get(todos_url).json()
 
     # Calculate progress
     total_tasks = len(todos_data)
-    done_tasks = [task for task in todos_data if task['completed']]
-    num_done_tasks = len(done_tasks)
+    done_tasks = len([task for task in todos_data if task['completed']])
+    
+    # Display progress
+    print(f"Employee {employee_name} is done with tasks({done_tasks}/{total_tasks}):")
+    
+    # Display completed tasks
+    for task in todos_data:
+        if task['completed']:
+            print(f"\t {task['title']}")
 
-    # Display information
-    print(f"Employee {employee_name} is done with tasks ({num_done_tasks}/{total_tasks}):")
-    for task in done_tasks:
-        print(f"\t{task['title']}")
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
-        sys.exit(1)
-
-    employee_id = int(sys.argv[1])
-    get_employee_info(employee_id)
+# Test the function with an example employee ID
+todo_list_progress(1)
