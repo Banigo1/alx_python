@@ -1,5 +1,5 @@
-import requests
 import json
+import requests
 
 def todo_list_progress():
     # Fetch all user data
