@@ -1,35 +1,24 @@
 import requests
 import json
+import sys
 
-def todo_list_progress(employee_id):
-    # Fetch user data
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    user_data = requests.get(user_url).json()
-    employee_name = user_data['name']
-    username = user_data['username']
+def export_employee_todo_list_to_json(employee_id):
+    """Exports the employee's TODO list to a JSON file."""
+    try:
+        # Get the employee's TODO list items.
+        todo_list_items_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+        todo_list_items_response = requests.get(todo_list_items_url)
+        todo_list_items_response.raise_for_status()  # Raise an exception for bad responses.
+        todo_list_items = todo_list_items_response.json()
 
-    # Fetch TODO data
-    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
-    todos_data = requests.get(todos_url).json()
-
-    # Calculate progress
-    total_tasks = len(todos_data)
-    done_tasks = len([task for task in todos_data if task['completed']])
-    
-    # Display progress
-    print(f"Employee {employee_name} is done with tasks({done_tasks}/{total_tasks}):")
-    
-    # Prepare data for JSON export
-    tasks = []
-    
-    for task in todos_data:
-        if task['completed']:
-            print(f"\t {task['title']}")
-        tasks.append({"task": task['title'], "completed": task['completed'], "username": username})
-    
-    # Write to JSON file
-    with open(f'{employee_id}.json', 'w') as file:
-        json.dump({employee_id: tasks}, file)
-
-# Test the function with an example employee ID
-todo_list_progress(1)
+        # Create a dictionary to store JSON data.
+        json_data = {
+            "USER_ID": [
+                {
+                    "task": task["title"],
+                    "completed": task["completed"],
+                    "username": task["username"]
+                }
+                for task in todo_list_items
+            ]
+        }
