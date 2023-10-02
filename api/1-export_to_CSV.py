@@ -1,42 +1,40 @@
-import os
+"""This module Records all tasks that are owned by this employee
+    and exports the data in the CSV format."""
+
 import requests
 import csv
-import sys
 
 def export_employee_todo_list_to_csv(employee_id):
     """Exports the employee's TODO list to a CSV file."""
-    try:
-        # ... (unchanged code for fetching and exporting TODO list)
 
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching TODO list for employee {employee_id}: {e}")
+    # Get the employee's TODO list items.
+    todo_list_items_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
+    todo_list_items_response = requests.get(todo_list_items_url)
+    todo_list_items = todo_list_items_response.json()
 
-def user_info(id):
-    """Prints the formatted output for a given user."""
-    try:
-        # Check if the CSV file exists before opening it.
-        csv_file_path = str(id) + ".csv"
-        if os.path.exists(csv_file_path):
-            with open(csv_file_path, 'r') as f:
-                csv_reader = csv.reader(f)
-                # Skip the header row
-                next(csv_reader)
-                # Get the first row (user ID, username, task completion status, task title)
-                user_info_row = next(csv_reader)
-                user_id, username, task_status, task_title = user_info_row
-                print(f"Formatting: {user_id},{username},{task_status},{task_title}")
-        else:
-            print(f"CSV file for user {id} not found.")
+    # Open a CSV file for writing.
+    csv_file = open(f"{employee_id}.csv", "w")
 
-    except FileNotFoundError:
-        print(f"CSV file for user {id} not found.")
+    # Create a CSV writer object.
+    csv_writer = csv.writer(csv_file)
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python script.py <employee_id>")
-        sys.exit(1)
+    # Write the header row to the CSV file.
+    csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
 
-    employee_id = int(sys.argv[1])
+    # Iterate over the employee's TODO list items, and write each item to the CSV file.
+    for todo_list_item in todo_list_items:
+        csv_writer.writerow([
+            employee_id,
+            todo_list_item["username"],
+            todo_list_item["completed"],
+            todo_list_item["title"]
+        ])
 
-    export_employee_todo_list_to_csv(employee_id)
-    user_info(employee_id)
+    # Close the CSV file.
+    csv_file.close()
+
+# Pass employee id on command line.
+employee_id = sys.argv[1]
+
+# Export the employee's TODO list to a CSV file.
+export_employee_todo_list_to_csv(employee_id)
