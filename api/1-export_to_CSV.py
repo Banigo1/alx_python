@@ -1,44 +1,59 @@
-"""
-This script uses an API to retrieve employee task information
-and display in a special format.
-
-It retrieves employees name, task completed with their titles.
-"""
-import csv
-import os
 import requests
 import sys
+import csv
 
-def get_employee_todo_progress(employee_id):
-    # Get employee details
-    employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    employee_response = requests.get(employee_url)
-    employee_data = employee_response.json()
-    employee_name = employee_data['username']
+# No execution of this file when imported
+if __name__ == "__main__":
+    
+    # Pass employee id on command line
+    id = sys.argv[1]
 
-    # Get employee TODO list
-    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
-    todos_response = requests.get(todos_url)
-    todos_data = todos_response.json()
+    # APIs 
+    userTodoURL = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+    userProfile = "https://jsonplaceholder.typicode.com/users/{}".format(id)
 
-    # Calculate progress
-    total_tasks = len(todos_data)
-    completed_tasks = sum(1 for todo in todos_data if todo['completed'])
+    # Make requests on APIs
+    todoResponse = requests.get(userTodoURL)
+    profileResponse = requests.get(userProfile)
 
-    # Display progress
-    print(f"User ID: {employee_id}")
-    print(f"Username: {employee_name}")
+    # Parse responses and store in variables
+    todoJson_Data = todoResponse.json()
+    profileJson_Data = profileResponse.json()
+
+    # Get employee information
+    employeeId = profileJson_Data['id']
+    employeeName = profileJson_Data['username']
+
+    # Count total and completed tasks
+    totalTasks = 0
+    completedTasks = 0
+
+    # List to store task details
+    tasks_list = []
+
+    for data in todoJson_Data:
+        for key, value in data.items():
+            if key == 'completed':
+                totalTasks += 1
+                if value == True:
+                    completedTasks += 1
+
+        # Append task details to the list
+        tasks_list.append([employeeId, employeeName, str(data['completed']), data['title']])
+
+    print("Employee {} is done with tasks({}/{}):".format(employeeName, completedTasks, totalTasks))
+
+    # Print tasks
+    for task in tasks_list:
+        print("\t{}".format(task[3]))
 
     # Export data to CSV
-    csv_file = f"{employee_id}.csv"
-    if not os.path.exists(csv_file):
-        print(f"CSV file '{csv_file}' does not exist.")
-        return
+    csv_filename = "{}.csv".format(employeeId)
+    with open(csv_filename, 'w', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        # Write header
+        csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+        # Write tasks data
+        csv_writer.writerows(tasks_list)
 
-    with open(csv_file, 'r') as file:
-        reader = csv.reader(file)
-        task_count = sum(1 for _ in reader) - 1  # Subtract 1 to exclude the header row
-
-    print(f"Number of tasks in CSV: {task_count}")
-
-# Example usage: get_employee_todo_progress(4)
+    print("Data exported to {}".format(csv_filename))
