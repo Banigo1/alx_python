@@ -4,9 +4,10 @@ and display in a special format.
 
 It retrieves employees name, task completed with their titles.
 """
-
 import csv
+import os
 import requests
+import sys
 
 def get_employee_todo_progress(employee_id):
     # Get employee details
@@ -32,10 +33,14 @@ def get_employee_todo_progress(employee_id):
 
     # Export data to CSV
     csv_file = f"{employee_id}.csv"
-    with open(csv_file, 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-        for todo in todos_data:
-            writer.writerow([employee_id, employee_name, todo['completed'], todo['title']])
+    if not os.path.exists(csv_file):
+        print(f"CSV file '{csv_file}' does not exist.")
+        return
 
-# Example usage: get_employee_todo_progress(1)
+    with open(csv_file, 'r') as file:
+        reader = csv.reader(file)
+        task_count = sum(1 for _ in reader) - 1  # Subtract 1 to exclude the header row
+
+    print(f"Number of tasks in CSV: {task_count}")
+
+# Example usage: get_employee_todo_progress(8)
