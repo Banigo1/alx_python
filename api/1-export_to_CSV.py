@@ -26,10 +26,8 @@ def get_employee_todo_progress(employee_id):
     completed_tasks = sum(1 for todo in todos_data if todo['completed'])
 
     # Display progress
-    print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
-    for todo in todos_data:
-        if todo['completed']:
-            print(f"\t{todo['title']}")
+    print(f"User ID: {employee_id}")
+    print(f"Username: {employee_name}")
 
     # Export data to CSV
     csv_file = f"{employee_id}.csv"
@@ -43,4 +41,4 @@ def get_employee_todo_progress(employee_id):
 
     print(f"Number of tasks in CSV: {task_count}")
 
-# Example usage: get_employee_todo_progress(8)
+# Example usage: get_employee_todo_progress(4)
