@@ -1,3 +1,35 @@
+"""
+Employee Task Information Retrieval and CSV Export Script
+
+This script retrieves task information for a specified employee using an API
+and exports the data in CSV format.
+
+Usage:
+    python script_name.py employee_id
+
+APIs:
+    - User Todo URL: https://jsonplaceholder.typicode.com/users/{employee_id}/todos
+    - User Profile URL: https://jsonplaceholder.typicode.com/users/{employee_id}
+
+Dependencies:
+    - requests
+    - csv
+
+Script Execution:
+    - The script should be executed from the command line with the employee_id as an argument.
+
+Output:
+    - Prints the employee's task completion status and titles.
+    - Exports data to a CSV file named USER_ID.csv.
+
+CSV Format:
+    "USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"
+
+Example:
+    python script_name.py 1
+
+"""
+
 import requests
 import sys
 import csv
