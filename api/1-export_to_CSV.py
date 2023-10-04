@@ -4,48 +4,37 @@ and display in a special format.
 
 It retrieves employees name, task completed with their titles.
 """
-import csv
 import requests
-import sys
+import csv
 
-# No execution of this file when imported
-if __name__ == "__main__":
-    
-# Pass employee id on command line
-    id = sys.argv[1]
+def get_employee_todo_progress(employee_id):
+    # Get employee details
+    employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+    employee_response = requests.get(employee_url)
+    employee_data = employee_response.json()
+    employee_name = employee_data['username']
 
-# APIs 
-    userTodoURL = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
-    userProfile = "https://jsonplaceholder.typicode.com/users/{}".format(id)
+    # Get employee TODO list
+    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+    todos_response = requests.get(todos_url)
+    todos_data = todos_response.json()
 
-# Make requests on APIs
-    todoResponse = requests.get(userTodoURL)
-    profileResponse = requests.get(userProfile)
+    # Calculate progress
+    total_tasks = len(todos_data)
+    completed_tasks = sum(1 for todo in todos_data if todo['completed'])
 
-# Parse responses and store in variables
-    todoJson_Data = todoResponse.json()
-    profileJson_Data = profileResponse.json()
+    # Display progress
+    print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
+    for todo in todos_data:
+        if todo['completed']:
+            print(f"\t{todo['title']}")
 
-#Get employee information
-    employeeName = profileJson_Data['username']
+    # Export data to CSV
+    csv_file = f"{employee_id}.csv"
+    with open(csv_file, 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+        for todo in todos_data:
+            writer.writerow([employee_id, employee_name, todo['completed'], todo['title']])
 
-    dataList = []
-
-    for data in todoJson_Data:
-        dataDict = {"userId":data['userId'], "name":employeeName, "completed":data['completed'], "title":data['title']}
-        dataList.append(dataDict)
-
-    # Specify the CSV file path
-    csv_file_path = '{}.csv'.format(todoJson_Data[0]['userId'])
-
-    # Define the field names (column headers)
-    fieldnames = ["userId", "name", "completed", "title"]
-
-    # Open the CSV file in write mode
-    with open(csv_file_path, 'w', newline='') as csv_file:
-        # Create a CSV writer
-        csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
-        # Write the data rows
-        for row in dataList:
-            csv_writer.writerow(row)
+# Example usage: get_employee_todo_progress(1)
