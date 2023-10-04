@@ -30,9 +30,9 @@ Example:
 
 """
 
+import csv
 import requests
 import sys
-import csv
 
 # No execution of this file when imported
 if __name__ == "__main__":
